@@ -241,3 +241,39 @@ motor, llantas, marca, modelo, puertas, color, placa, vim
 
 //*************************************************************************************************************
 
+// ° Metodos con return
+
+// en metodos con return no se usa void(este es un metodo sin retorno)
+
+//static int addNumbers(int numOne, int numTwo) // esto dice que al final de la ejecucion del metodo devolvera un dato de tipo entero
+//{
+//    return numOne + numTwo;
+//}
+
+//Console.WriteLine(addNumbers(3,3));
+
+//Console.WriteLine("Ingrese un numero");
+//int numberOne = Convert.ToInt32(Console.ReadLine());
+
+//Console.WriteLine("Ingrese otro numero");
+//int numberTwo = Convert.ToInt32(Console.ReadLine());
+
+//Console.WriteLine(addNumbers(numberOne, numberTwo));
+
+/*
+  En cuanto hay una llamada a un metodo, el flujo de ejecucion pasa a ese metodo
+  !!! Una instruccion return siempre devuelve el flujo de ejecucion a la llamada, es decir en cuanto se 
+  en codigo se encuentra un return se sale del metodo y devuelve el flujo de ejecucion donde se produjo 
+  la llamada.
+
+  un return solo osea (return;) sirve para decirle al codigo que salga del bucle o metodo (aunque es mala practica)
+ */
+
+// otra manera de hacer un metodo (es una nomeclatura), pero solo cuando este tiene una linea de codigo
+// Esta manera lo que hace es precindir de la funcion return
+
+//static int function(int a, int b) => a + b;
+
+//Console.WriteLine($"La suma es: {function(5, 5)}");
+
+
