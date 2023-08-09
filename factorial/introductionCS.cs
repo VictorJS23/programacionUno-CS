@@ -126,9 +126,49 @@ using System.Linq.Expressions;
 //}
 
 /*
- Crear un programa que registre 10 carros, con todos los atributos definidos anteriormente
+ Crear un programa que registre 10 Autos, con todos los atributos definidos anteriormente
 motor, llantas, marca, modelo, puertas, color, placa, vim
  */
 
 
 // ESTE ES PRIMER COMMIT DEL REPOSITORIO //
+
+string[] motor = new string[10];
+string[] llantas = new string[10];
+string[] marca = new string[10];
+string[] modelo = new string[10];
+int[] puertas = new int[10];
+string[] color = new string[10];
+string[] placa = new string[10];
+string[] vin = new string[10];
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine($"Auto n° {i + 1} \n ");
+    Console.Write("Motor: "); motor[i] = Console.ReadLine();
+    Console.Write("Llantas: "); llantas[i] = Console.ReadLine();
+    Console.Write("Marca: "); marca[i] = Console.ReadLine();
+    Console.Write("Modelo: "); modelo[i] = Console.ReadLine();
+    Console.Write("Puertas: "); puertas[i] = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Color: "); color[i] = Console.ReadLine();
+    Console.Write("Placa: "); placa[i] = Console.ReadLine();
+    Console.Write("Vin: "); vin[i] = Console.ReadLine();
+    Console.WriteLine("\n");
+}
+
+Console.WriteLine("Acontinuacion la impresion de las Caract. ingresadas de los autos \n");
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine($"Auto n° {i + 1} \n ");
+    Console.WriteLine($"Motor: {motor[i]}");
+    Console.WriteLine($"Llantas: {llantas[i]}");
+    Console.WriteLine($"Marca: {marca[i]}");
+    Console.WriteLine($"Modelo: {modelo[i]}");
+    Console.WriteLine($"Puertas: {puertas[i]}");
+    Console.WriteLine($"Color: {color[i]}");
+    Console.WriteLine($"Placa: {placa[i]}");
+    Console.WriteLine($"Vin: {vin[i]}");
+    Console.WriteLine("\n");
+}
+
