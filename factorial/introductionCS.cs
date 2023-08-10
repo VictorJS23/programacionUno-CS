@@ -277,3 +277,127 @@ motor, llantas, marca, modelo, puertas, color, placa, vim
 //Console.WriteLine($"La suma es: {function(5, 5)}");
 
 //*********************************************************************************************************
+
+// ° Ambito y sobreCarga
+// ambito o alcance de las variables y la sobrecarga de metodos
+
+// ambito o alcance del metodo es todo lo que se encuentra dentro del codigo entre {} y todo lo que sea
+// declarado dentro de ellas tendras validez y solo sera visible dentro de ese ambito o alcance.
+
+//class program // Este class program se creo para demostrar el ambito de las variable
+//{
+    /*
+     Para compartir variables entre diferentes metodos de una misma clase se deben declara las variables
+    no como ambito local(dentro de un metodo) sino como AMBITO DE CLASE(dentro de la clase), esta es la
+    excepcion dicha en la linea 309 a 311.
+     */
+
+        //int numeroUno = 5;
+        //int numeroDos = 7;
+
+    // se pueden declarar en cualquier momento e incluso iniciarlas
+    //Como se ve estas variables son visibles y accesibles tanto desde firstMethod como de secondMethod
+    // o cualquier otro metodo esto de debe a porq el ambito de estas estan comprendidas dentro de las {}
+    // de class program y todo lo que este entre ellas podran acceder a estas
+
+    // las variables que estan declaradas con ambito de clase se les denomina "campo ó campos de clase"
+
+    //void firstMethod() // no es necesario que sea static ya que no se llamara desde el metodo main
+    //{
+    //    //Console.WriteLine(numeroUno + numeroDos);
+
+    //    // esto daria error ya que hay una EXCEPCION, y es que cuando se declara una variable no con ambito de
+    //    // metodo (ambito local) sino con ambito de clase, es decir dentro de una clase pero fuera de cualquier
+    //    // metodo, en estos casos el flujo de ejecucion es permisivo
+
+
+    //    Console.WriteLine(numeroUno + numeroDos);
+    //}
+
+    //void secondMethod()
+    //{
+    //    //Console.WriteLine(numeroUno); Este codigo dara error !!!
+
+    //    /*
+    //     Este codigo da error ya que no existe en contexto actual (ambito o alcance).
+
+    //    Ya que solo se puede acceder a ella desde su ambito en cuanto el metodo termina su ejecucion, todo 
+    //    lo que hay en su interior desaparece de la memoria y queda fuera del alcance de cualquier otro sitio
+
+    //    Es decir que la variable numeroUno tiene un "ambito local" 
+    //     */
+
+    //    Console.WriteLine(numeroUno + numeroDos);
+
+    //}
+
+    // Sobrecarga de metodos ******************************************************************************
+
+    // Esta se produce cuando se tiene en el mismo ambito (o clase) dos o mas metodos con el mismo nombre
+
+    //static hace que se puedan llamar desde el metodo main 
+
+    // para que la sobrecarga se cumpla, estos metodo deben recibir diferentes tipos de parametros
+    // o diferente numero de parametros.
+
+    //static int Suma(int operador1, int operador2) => operador1 + operador2;
+
+    //static int Suma(int numero1, double numero2) => numero1;
+
+    //static double Suma(double numero1, double numero2, double numero3) => numero1 + numero2 + numero3;
+
+    //static void Main(string[] args)
+    //{
+
+      //  Console.WriteLine(Suma(7,5.3)); // el compilador es el que distingue que metodo usar debido a los parametros
+
+    //}
+   
+
+//}
+
+//***********************************************************************************************************
+
+// ° PARAMETROS OPCIONALES
+
+//class program 
+//{
+
+//    static void Main(string[] args) 
+//    {
+//        int valor1 = 7;
+
+//        double valor2 = 5.2;
+
+//        double valor3 = 8.3;
+
+//        Console.WriteLine(Suma(valor1, valor2));
+
+//     // no da un error por no poner valor3 ya que no se pasa el parametro de este ya que es opcional
+//     // se podria agregar en cualquier momento y no toma el valor de 0 toma el valor que se le pase
+//     // TODO PARAMETRO OPCIONAL DEBE DE IR SEGUIDO A LOS OBLIGATORIOS (al final)!!!
+
+//    }
+
+//    // para que un parametro sea opcional hay que asignarle un valor por defecto
+
+//    static double Suma(int num1, double num2, double num3 = 0) // fuciona parecido a la sobrecarga sin que este presente
+//    { 
+//        return num1 + num2 + num3; 
+//    }
+
+//    // ambiguedades ************************************************************************************
+
+//    static double Suma(int num1, double num2) 
+//    {
+//        return num1 + num2;
+//    }
+
+//    //basicamente se hace la llamada al metodo que mas se adapte a los parametros
+
+//}
+
+
+
+
+
