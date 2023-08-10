@@ -397,7 +397,21 @@ motor, llantas, marca, modelo, puertas, color, placa, vim
 
 //}
 
+// Excepciones ***************************************************************************************
 
+// que son las exepciones
+// que es el manejo o captura de excepciones
 
+/*Las excepciones son errores en tiempo de ejecucion del programa que escapan al control del 
+ programador
+algunos mencionados
 
+ memoria corrupta
+desbordamiento de pila
+sectores de disco duro defectusos
+conexiones a bases de datos... etc
+
+ estos provocan que el programa caiga*/
+
+// Clases ********************************************************************************************
 
