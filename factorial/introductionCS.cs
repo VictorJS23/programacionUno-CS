@@ -1,5 +1,8 @@
-﻿using System;
+﻿
+using System;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 //Console.WriteLine("Hola mundo");
 
@@ -286,73 +289,73 @@ motor, llantas, marca, modelo, puertas, color, placa, vim
 
 //class program // Este class program se creo para demostrar el ambito de las variable
 //{
-    /*
-     Para compartir variables entre diferentes metodos de una misma clase se deben declara las variables
-    no como ambito local(dentro de un metodo) sino como AMBITO DE CLASE(dentro de la clase), esta es la
-    excepcion dicha en la linea 309 a 311.
-     */
+/*
+ Para compartir variables entre diferentes metodos de una misma clase se deben declara las variables
+no como ambito local(dentro de un metodo) sino como AMBITO DE CLASE(dentro de la clase), esta es la
+excepcion dicha en la linea 309 a 311.
+ */
 
-        //int numeroUno = 5;
-        //int numeroDos = 7;
+//int numeroUno = 5;
+//int numeroDos = 7;
 
-    // se pueden declarar en cualquier momento e incluso iniciarlas
-    //Como se ve estas variables son visibles y accesibles tanto desde firstMethod como de secondMethod
-    // o cualquier otro metodo esto de debe a porq el ambito de estas estan comprendidas dentro de las {}
-    // de class program y todo lo que este entre ellas podran acceder a estas
+// se pueden declarar en cualquier momento e incluso iniciarlas
+//Como se ve estas variables son visibles y accesibles tanto desde firstMethod como de secondMethod
+// o cualquier otro metodo esto de debe a porq el ambito de estas estan comprendidas dentro de las {}
+// de class program y todo lo que este entre ellas podran acceder a estas
 
-    // las variables que estan declaradas con ambito de clase se les denomina "campo ó campos de clase"
+// las variables que estan declaradas con ambito de clase se les denomina "campo ó campos de clase"
 
-    //void firstMethod() // no es necesario que sea static ya que no se llamara desde el metodo main
-    //{
-    //    //Console.WriteLine(numeroUno + numeroDos);
+//void firstMethod() // no es necesario que sea static ya que no se llamara desde el metodo main
+//{
+//    //Console.WriteLine(numeroUno + numeroDos);
 
-    //    // esto daria error ya que hay una EXCEPCION, y es que cuando se declara una variable no con ambito de
-    //    // metodo (ambito local) sino con ambito de clase, es decir dentro de una clase pero fuera de cualquier
-    //    // metodo, en estos casos el flujo de ejecucion es permisivo
+//    // esto daria error ya que hay una EXCEPCION, y es que cuando se declara una variable no con ambito de
+//    // metodo (ambito local) sino con ambito de clase, es decir dentro de una clase pero fuera de cualquier
+//    // metodo, en estos casos el flujo de ejecucion es permisivo
 
 
-    //    Console.WriteLine(numeroUno + numeroDos);
-    //}
+//    Console.WriteLine(numeroUno + numeroDos);
+//}
 
-    //void secondMethod()
-    //{
-    //    //Console.WriteLine(numeroUno); Este codigo dara error !!!
+//void secondMethod()
+//{
+//    //Console.WriteLine(numeroUno); Este codigo dara error !!!
 
-    //    /*
-    //     Este codigo da error ya que no existe en contexto actual (ambito o alcance).
+//    /*
+//     Este codigo da error ya que no existe en contexto actual (ambito o alcance).
 
-    //    Ya que solo se puede acceder a ella desde su ambito en cuanto el metodo termina su ejecucion, todo 
-    //    lo que hay en su interior desaparece de la memoria y queda fuera del alcance de cualquier otro sitio
+//    Ya que solo se puede acceder a ella desde su ambito en cuanto el metodo termina su ejecucion, todo 
+//    lo que hay en su interior desaparece de la memoria y queda fuera del alcance de cualquier otro sitio
 
-    //    Es decir que la variable numeroUno tiene un "ambito local" 
-    //     */
+//    Es decir que la variable numeroUno tiene un "ambito local" 
+//     */
 
-    //    Console.WriteLine(numeroUno + numeroDos);
+//    Console.WriteLine(numeroUno + numeroDos);
 
-    //}
+//}
 
-    // Sobrecarga de metodos ******************************************************************************
+// Sobrecarga de metodos ******************************************************************************
 
-    // Esta se produce cuando se tiene en el mismo ambito (o clase) dos o mas metodos con el mismo nombre
+// Esta se produce cuando se tiene en el mismo ambito (o clase) dos o mas metodos con el mismo nombre
 
-    //static hace que se puedan llamar desde el metodo main 
+//static hace que se puedan llamar desde el metodo main 
 
-    // para que la sobrecarga se cumpla, estos metodo deben recibir diferentes tipos de parametros
-    // o diferente numero de parametros.
+// para que la sobrecarga se cumpla, estos metodo deben recibir diferentes tipos de parametros
+// o diferente numero de parametros.
 
-    //static int Suma(int operador1, int operador2) => operador1 + operador2;
+//static int Suma(int operador1, int operador2) => operador1 + operador2;
 
-    //static int Suma(int numero1, double numero2) => numero1;
+//static int Suma(int numero1, double numero2) => numero1;
 
-    //static double Suma(double numero1, double numero2, double numero3) => numero1 + numero2 + numero3;
+//static double Suma(double numero1, double numero2, double numero3) => numero1 + numero2 + numero3;
 
-    //static void Main(string[] args)
-    //{
+//static void Main(string[] args)
+//{
 
-      //  Console.WriteLine(Suma(7,5.3)); // el compilador es el que distingue que metodo usar debido a los parametros
+//  Console.WriteLine(Suma(7,5.3)); // el compilador es el que distingue que metodo usar debido a los parametros
 
-    //}
-   
+//}
+
 
 //}
 
@@ -413,5 +416,203 @@ conexiones a bases de datos... etc
 
  estos provocan que el programa caiga*/
 
-// Clases ********************************************************************************************
+// POO *****************************************************************************************************
 
+/*
+ Consiste en que los objetos tiene un estado, un comportamiento(que puede hacer) y sus propiedades
+
+° Modificadores de acceso:
+
+Public - accesible desde cualquier parte
+Private - accesible solo desde la propia clase
+Protected - accesible desde clase derivada
+internal - accesible desde el mismo ensamblado
+protected internal - accesible desde el mismo ensamblado o clase derivada de otro ensamblado
+private protected - accesible desde la misma clase o clase derivada del mismo ensamblado
+por defecto - accesible desde el mismo paquete
+
+Clase
+Modelo donde se redactan las caracteristicas comunes de un grupo de objetos.
+
+Objeto
+son los que derivan de la clase
+
+- tiene propiedadades(atributos)
+- tiene un comportamiento(metodos o funciones), (que es capaz de hacer?)
+
+ */
+
+//namespace EjemploPOO
+//{
+//    class program
+//    {
+//        static void Main(string[] args)
+//        {
+//            // el primer objeto de la clase circulo Ó la primera instancia de tipo circulo
+
+
+//            Circulo miCirculo; // esto es una creacion de objeto de tipo circulo. Variable/objeto de tipo Circulo
+
+//            // como se la un valor
+
+//            miCirculo = new Circulo(); // esto se llama iniciazion de variable/objeto de tipo circulo. Intanciar una clase
+//                                       // Se le puede denominar Instanciacion, Ejemplarizacion, Creacion de ejemplar de clase.
+
+//            //Console.WriteLine(miCirculo.CalculoArea(3));
+
+//            ConversorEuroDollar obj = new ConversorEuroDollar();
+
+//            obj.cambiarValorEuro(-3);
+
+//            Console.WriteLine(obj.convert(50));
+//        }
+//    }
+
+//    class Circulo
+//    {
+//        // todo el codigo de la clase circulo
+//        // area de un circulo es PI* r^2
+
+//        private const double pi = 3.1416; // esto es una propiedad de la clase circulo. Cuando estan definidas dentro de una 
+//                            // clase se les denomina Campo de clase.
+
+//        // crear un metodo que sea capaz de calcular su area
+
+//        public double CalculoArea(int radio) // metodo de clase. Esto es el comportamiento de los objetos de circulo
+//        {
+//            return pi * Math.Pow(2, radio);
+//        }
+
+//     // Encapsulamiento y convenciones **************************************************************************
+
+//     //cuando no sea necesario que una variable o constante o incluso metodo sea accesible desde fuera de su clase
+//     // se encapsula (private) solo sera visible desde la clase donde se encuentra (aunque en C#
+//     // ya esta "por defecto")
+
+//     // como regla general cuando una clase se usa variables, constantes, datos estas deben estar encapsuladas
+//     // y si se necesita acceder a ellas fuera de su clase se hara a travez de un "metodo de acceso"
+
+
+
+//        // convenciones***********************************************************************
+
+//        /*
+//         Los identificadores "public" deben de comenzar con letra mayuscula (PascalCase), y los que no
+//        son "public" deben comenzar con letra minuscula (camelCase)
+//         */
+
+//    }
+
+//    class ConversorEuroDollar
+//    {
+//        private double euro = 1.253;
+
+//        public double convert(double cantidad)
+//        {
+//            return euro * cantidad;
+//        }
+
+//        public void cambiarValorEuro(double newValue)
+//        {
+//            if (newValue < 0) euro = 1.253;
+
+//            else
+//                euro = newValue;
+
+//            // esta validacion se hace ya que este valor si bien puede cambiar su valor,
+//            // jamas este sera < 0 por lo tanto se hace este metodo
+//        }
+//    }
+
+//}
+
+
+// Constructores ***************************************************************************************
+/*
+   Los constructores tiene como finalidad dar un estado inicial a los objetos (se podra modificar despues)
+ */
+
+// Ejemplo llamado usoCoches
+
+//namespace UsoCoches
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+
+//            Coche coche1 = new Coche(); // esto es un objeto o instancia de la clase Coche
+//            // esto es dar un estado inicial a nuestro coche1
+
+//            Coche coche2 = new Coche();
+
+//            Console.WriteLine(coche1.getInfoCoche());
+//            Console.WriteLine(coche2.getInfoCoche());
+
+//            // si yo por ejmp quisiera crear un coche que no tenga el mismo estado inicial, hay que crear
+//            // mas de un constructor, y a esto se le llama sobrecarga de constructores
+//            // se produce cuando se tiene mas de un constructor (debe resibitr diferente numero de parametros)
+
+//            Coche coche3 = new Coche(4500.25, 1200.35);// esto lo que hace es que llama al constructor que
+//                                                       // si tiene parametros
+
+//            Console.WriteLine(coche3.getInfoCoche());
+
+
+
+//        }
+//    }
+
+//    class Coche
+//    {
+
+//        // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
+//        // Y TAMPOCO PUEDE SER VOID
+
+//        public Coche()
+//        {
+//            // aca se define el estado inicial de la clase, en este caso "estado inicial del Coche"
+//            // este sera el estado inicial de los objetos derivados de la clase Coche
+
+//            ruedas = 4;
+
+//            largo = 2300.5;
+
+//            ancho = 0.800;
+//        }
+
+//        public Coche(double largoCoche, double anchoCoche)
+//        {
+//            ruedas = 4;
+
+//            largo = largoCoche;
+            
+//            ancho = anchoCoche;
+//        }
+
+//        // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
+//        // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
+//        // son las que dan informacion de propiedades (es por convencion)
+
+//        public string getInfoCoche()
+//        {
+//            return $"Informacion de coche: ruedas: {ruedas}....Largo: {largo}....Ancho: {ancho}";
+//        }
+
+//        // propiedades o comportamientos
+
+//        private int ruedas;
+
+//        private double largo;
+
+//        private double ancho;
+
+//        private bool climatizador;
+
+//        private String tapiceria;
+
+//        // definir comportamiento 
+        
+
+//    }
+//}
