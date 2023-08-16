@@ -540,124 +540,124 @@ son los que derivan de la clase
 
 // Ejemplo llamado usoCoches
 
-namespace UsoCoche
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+//namespace UsoCoche
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
 
-            Coche coche1 = new Coche(); // esto es un objeto o instancia de la clase Coche
-            // esto es dar un estado inicial a nuestro coche1
+//            Coche coche1 = new Coche(); // esto es un objeto o instancia de la clase Coche
+//            // esto es dar un estado inicial a nuestro coche1
 
-            Coche coche2 = new Coche();
+//            Coche coche2 = new Coche();
 
-            Console.WriteLine(coche1.getInfoCoche());
-            Console.WriteLine(coche2.getInfoCoche());
+//            Console.WriteLine(coche1.getInfoCoche());
+//            Console.WriteLine(coche2.getInfoCoche());
 
-            // si yo por ejmp quisiera crear un coche que no tenga el mismo estado inicial, hay que crear
-            // mas de un constructor, y a esto se le llama sobrecarga de constructores
-            // se produce cuando se tiene mas de un constructor (debe resibitr diferente numero de parametros)
+//            // si yo por ejmp quisiera crear un coche que no tenga el mismo estado inicial, hay que crear
+//            // mas de un constructor, y a esto se le llama sobrecarga de constructores
+//            // se produce cuando se tiene mas de un constructor (debe resibitr diferente numero de parametros)
 
-            Coche coche3 = new Coche(4500.25, 1200.35);// esto lo que hace es que llama al constructor que
-                                                       // si tiene parametros
+//            Coche coche3 = new Coche(4500.25, 1200.35);// esto lo que hace es que llama al constructor que
+//                                                       // si tiene parametros
 
-            Console.WriteLine(coche3.getInfoCoche());
+//            Console.WriteLine(coche3.getInfoCoche());
 
-            coche3.setExtras(true, "cuero");
+//            coche3.setExtras(true, "cuero");
 
-            Console.WriteLine(coche3.getExtras());
-
-
-        }
-    }
-
-    // Only separator of the class principal Main ***************************************************
-
-    partial class Coche
-    {
-
-        // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
-        // Y TAMPOCO PUEDE SER VOID
-
-        public Coche()
-        {
-            // aca se define el estado inicial de la clase, en este caso "estado inicial del Coche"
-            // este sera el estado inicial de los objetos derivados de la clase Coche
-
-            ruedas = 4;
-
-            largo = 2300.5;
-
-            ancho = 0.800;
-
-            tapiceria = "tela";
-
-        }
+//            Console.WriteLine(coche3.getExtras());
 
 
-        public Coche(double largoCoche, double anchoCoche)
-        {
-            ruedas = 4;
+//        }
+//    }
 
-            largo = largoCoche;
+//    // Only separator of the class principal Main ***************************************************
 
-            ancho = anchoCoche;
+//    partial class Coche
+//    {
 
-            tapiceria = "tela";
+//        // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
+//        // Y TAMPOCO PUEDE SER VOID
 
-    // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
-    // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
-    // son las que dan informacion de propiedades (es por convencion)
+//        public Coche()
+//        {
+//            // aca se define el estado inicial de la clase, en este caso "estado inicial del Coche"
+//            // este sera el estado inicial de los objetos derivados de la clase Coche
 
-        }
-    }
-        // en algunos casos es importamte particionar las clases ya que el codigo dentro de una clase
-        // podrias llegar a ser poco legible ********************************************************
+//            ruedas = 4;
 
-    partial class Coche {
+//            largo = 2300.5;
 
-        public string getInfoCoche()
-        {
-            return $"Informacion de coche: ruedas: {ruedas}....Largo: {largo}....Ancho: {ancho}";
-        }
+//            ancho = 0.800;
 
-        //Metodo setter(establecer) esta dedicado a establecer propiedades a los objetos, estos no devuelven nada
-        // tiene que ir a compañado de un getter
-        // el objetivo de este es establecer un valor 
+//            tapiceria = "tela";
 
-        public void setExtras(bool climatizador, string tapiceria)// son los parametros que le queremos pasar el metdo
-        {
-            this.climatizador = climatizador;
+//        }
 
-            this.tapiceria = tapiceria;
 
-            //Uso del this sirve para diferenciar cuando se refiere a un campo de clase o a un parametro
-            // al poner this en este caso climatizador y tapiceria "this" hace que haga referencia
-            // a la variable de clase "al campo de clase"
-        }
+//        public Coche(double largoCoche, double anchoCoche)
+//        {
+//            ruedas = 4;
 
-        public String getExtras()
-        {
-            return $"Extras del coche: Tapiceria: {tapiceria}.... climatizador: {climatizador}";
-        }
+//            largo = largoCoche;
 
-        // propiedades o comportamientos
+//            ancho = anchoCoche;
 
-        private int ruedas;
+//            tapiceria = "tela";
 
-        private double largo;
+//    // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
+//    // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
+//    // son las que dan informacion de propiedades (es por convencion)
 
-        private double ancho;
+//        }
+//    }
+//        // en algunos casos es importamte particionar las clases ya que el codigo dentro de una clase
+//        // podrias llegar a ser poco legible ********************************************************
 
-        private bool climatizador;
+//    partial class Coche {
 
-        private String tapiceria;
+//        public string getInfoCoche()
+//        {
+//            return $"Informacion de coche: ruedas: {ruedas}....Largo: {largo}....Ancho: {ancho}";
+//        }
 
-        // definir comportamiento 
+//        //Metodo setter(establecer) esta dedicado a establecer propiedades a los objetos, estos no devuelven nada
+//        // tiene que ir a compañado de un getter
+//        // el objetivo de este es establecer un valor 
 
-    }
-}
+//        public void setExtras(bool climatizador, string tapiceria)// son los parametros que le queremos pasar el metdo
+//        {
+//            this.climatizador = climatizador;
+
+//            this.tapiceria = tapiceria;
+
+//            //Uso del this sirve para diferenciar cuando se refiere a un campo de clase o a un parametro
+//            // al poner this en este caso climatizador y tapiceria "this" hace que haga referencia
+//            // a la variable de clase "al campo de clase"
+//        }
+
+//        public String getExtras()
+//        {
+//            return $"Extras del coche: Tapiceria: {tapiceria}.... climatizador: {climatizador}";
+//        }
+
+//        // propiedades o comportamientos
+
+//        private int ruedas;
+
+//        private double largo;
+
+//        private double ancho;
+
+//        private bool climatizador;
+
+//        private String tapiceria;
+
+//        // definir comportamiento 
+
+//    }
+//}
 
 
 
