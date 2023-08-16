@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClaseDosCS;
+using System;
+using System.Numerics;
 
 namespace Program
 {
@@ -6,48 +8,58 @@ namespace Program
     {
         static void Main(string[] args)
         {
+            int option = 0;
 
-            int[] array1 = { 1, 2, 3 };
-            int[] array2 = { 1, 2, 3 };
+            Vehiculo[] vehiculos = new Vehiculo[2];
+            do
+            {
+                Console.Clear();
 
-            Arrays sumarArreglo = new Arrays();
+                Console.WriteLine("***Menu***");
+                Console.WriteLine("1. Registrar vehiculo");
+                Console.WriteLine("2. Mostrar vehiculo");
+                Console.WriteLine("0. Salir");
+                option = int.Parse(Console.ReadLine());
 
-            int[] result = sumarArreglo.sumArray(array1, array2);
 
-            Console.WriteLine("La suma de los arreglos es: \n");
 
-            sumarArreglo.viewArray(result);
+            switch(option)
+            {
+                case 1:
+                    //Console.WriteLine("Registrar");
+                    for(int i = 0; i < vehiculos.Length; i++)
+                        {
+                            Console.WriteLine($"Vehiculo *******# {i + 1}");
 
-            int edad = 15;
+                            vehiculos[i] = new Vehiculo();
 
-            string validation = (edad > 18) ?  "eres mayor" : "eres menor";
+                            vehiculos[i].createVehicle();
+                        }
+                    break;
+
+                case 2:
+                    //Console.WriteLine("Mostrar");
+
+                        for(int i = 0; i < vehiculos.Length; i++)
+                        {
+                            Console.WriteLine($"Vehiculo *******# {i + 1}");
+                            vehiculos[i].getInfoCoche();
+                        }
+
+                        Console.ReadKey();
+
+                    break;
+
+                default:
+                    Console.WriteLine("Selecione una opcion valida");
+                    break;
+
+            }
+
+            } while (option != 0);
 
 
         }
     }
-
-    class Arrays
-    {
-        public int[] sumArray(int[] array1, int[] array2)
-        {
-            int[] result = new int[array1.Length];
-
-            for (int i = 0; i < array1.Length; i++)
-            {
-                result[i] = array1[i] + array2[i];
-            }
-
-            return result;
-        }
-
-        public void viewArray(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine(array[i]);
-            }
-        }
-    }
-
-    
+   
 }

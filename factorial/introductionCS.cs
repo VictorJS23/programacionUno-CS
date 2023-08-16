@@ -534,86 +534,113 @@ son los que derivan de la clase
 
 // Ejemplo llamado usoCoches
 
-//namespace UsoCoches
-//{
-//    class Program
-//    {
-//        static void Main(string[] args)
-//        {
+namespace UsoCoche
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
-//            Coche coche1 = new Coche(); // esto es un objeto o instancia de la clase Coche
-//            // esto es dar un estado inicial a nuestro coche1
+            Coche coche1 = new Coche(); // esto es un objeto o instancia de la clase Coche
+            // esto es dar un estado inicial a nuestro coche1
 
-//            Coche coche2 = new Coche();
+            Coche coche2 = new Coche();
 
-//            Console.WriteLine(coche1.getInfoCoche());
-//            Console.WriteLine(coche2.getInfoCoche());
+            Console.WriteLine(coche1.getInfoCoche());
+            Console.WriteLine(coche2.getInfoCoche());
 
-//            // si yo por ejmp quisiera crear un coche que no tenga el mismo estado inicial, hay que crear
-//            // mas de un constructor, y a esto se le llama sobrecarga de constructores
-//            // se produce cuando se tiene mas de un constructor (debe resibitr diferente numero de parametros)
+            // si yo por ejmp quisiera crear un coche que no tenga el mismo estado inicial, hay que crear
+            // mas de un constructor, y a esto se le llama sobrecarga de constructores
+            // se produce cuando se tiene mas de un constructor (debe resibitr diferente numero de parametros)
 
-//            Coche coche3 = new Coche(4500.25, 1200.35);// esto lo que hace es que llama al constructor que
-//                                                       // si tiene parametros
+            Coche coche3 = new Coche(4500.25, 1200.35);// esto lo que hace es que llama al constructor que
+                                                       // si tiene parametros
 
-//            Console.WriteLine(coche3.getInfoCoche());
+            Console.WriteLine(coche3.getInfoCoche());
+
+            coche3.setExtras(true, "cuero");
+
+            Console.WriteLine(coche3.getExtras());
 
 
+        }
+    }
 
-//        }
-//    }
+    class Coche
+    {
 
-//    class Coche
-//    {
+        // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
+        // Y TAMPOCO PUEDE SER VOID
 
-//        // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
-//        // Y TAMPOCO PUEDE SER VOID
+        public Coche()
+        {
+            // aca se define el estado inicial de la clase, en este caso "estado inicial del Coche"
+            // este sera el estado inicial de los objetos derivados de la clase Coche
 
-//        public Coche()
-//        {
-//            // aca se define el estado inicial de la clase, en este caso "estado inicial del Coche"
-//            // este sera el estado inicial de los objetos derivados de la clase Coche
+            ruedas = 4;
 
-//            ruedas = 4;
+            largo = 2300.5;
 
-//            largo = 2300.5;
+            ancho = 0.800;
 
-//            ancho = 0.800;
-//        }
+        }
 
-//        public Coche(double largoCoche, double anchoCoche)
-//        {
-//            ruedas = 4;
 
-//            largo = largoCoche;
-            
-//            ancho = anchoCoche;
-//        }
+        public Coche(double largoCoche, double anchoCoche)
+        {
+            ruedas = 4;
 
-//        // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
-//        // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
-//        // son las que dan informacion de propiedades (es por convencion)
+            largo = largoCoche;
 
-//        public string getInfoCoche()
-//        {
-//            return $"Informacion de coche: ruedas: {ruedas}....Largo: {largo}....Ancho: {ancho}";
-//        }
+            ancho = anchoCoche;
+        }
 
-//        // propiedades o comportamientos
+        // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
+        // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
+        // son las que dan informacion de propiedades (es por convencion)
 
-//        private int ruedas;
+        public string getInfoCoche()
+        {
+            return $"Informacion de coche: ruedas: {ruedas}....Largo: {largo}....Ancho: {ancho}";
+        }
 
-//        private double largo;
+        //Metodo setter(establecer) esta dedicado a establecer propiedades a los objetos, estos no devuelven nada
+        // tiene que ir a compañado de un getter
+        // el objetivo de este es establecer un valor 
 
-//        private double ancho;
+        public void  setExtras(bool paramClimatizador, string paramTapiceria )// son los parametros que le queremos pasar el metdo
+        {
+            climatizador = paramClimatizador;
 
-//        private bool climatizador;
+            tapiceria = paramTapiceria;
+        }
 
-//        private String tapiceria;
+        public String getExtras()
+        {
+            return $"Extras del coche: Tapiceria: {tapiceria}.... climatizador: {climatizador}";
+        }
 
-//        // definir comportamiento 
-        
+        // propiedades o comportamientos
 
-//    }
-//}
+        private int ruedas;
+
+        private double largo;
+
+        private double ancho;
+
+        private bool climatizador;
+
+        private String tapiceria;
+
+        // definir comportamiento 
+
+
+    }
+}
+
+//**********************************++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// getters & setters
+// uso del this
+// dividir (split) las clases largas
 
