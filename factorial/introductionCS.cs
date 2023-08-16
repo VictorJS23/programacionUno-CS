@@ -532,6 +532,12 @@ son los que derivan de la clase
    Los constructores tiene como finalidad dar un estado inicial a los objetos (se podra modificar despues)
  */
 
+//**********************************++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// getters & setters
+// uso del this
+// dividir (split) las clases largas
+
 // Ejemplo llamado usoCoches
 
 namespace UsoCoche
@@ -566,7 +572,9 @@ namespace UsoCoche
         }
     }
 
-    class Coche
+    // Only separator of the class principal Main ***************************************************
+
+    partial class Coche
     {
 
         // constructor obligado DEBE TENER EL MISMO NOMBRE DE LA CLASE Y NO PUEDE DEVOLVER NINGUN DATO
@@ -583,6 +591,8 @@ namespace UsoCoche
 
             ancho = 0.800;
 
+            tapiceria = "tela";
+
         }
 
 
@@ -593,11 +603,19 @@ namespace UsoCoche
             largo = largoCoche;
 
             ancho = anchoCoche;
-        }
 
-        // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
-        // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
-        // son las que dan informacion de propiedades (es por convencion)
+            tapiceria = "tela";
+
+    // poder acceder a estas propiedades de inicio hay que hacer un "metodo de acceso"
+    // este tipo de metodos que permiten acceder a propiedades se les denomina metodos getter
+    // son las que dan informacion de propiedades (es por convencion)
+
+        }
+    }
+        // en algunos casos es importamte particionar las clases ya que el codigo dentro de una clase
+        // podrias llegar a ser poco legible ********************************************************
+
+    partial class Coche {
 
         public string getInfoCoche()
         {
@@ -608,11 +626,15 @@ namespace UsoCoche
         // tiene que ir a compañado de un getter
         // el objetivo de este es establecer un valor 
 
-        public void  setExtras(bool paramClimatizador, string paramTapiceria )// son los parametros que le queremos pasar el metdo
+        public void setExtras(bool climatizador, string tapiceria)// son los parametros que le queremos pasar el metdo
         {
-            climatizador = paramClimatizador;
+            this.climatizador = climatizador;
 
-            tapiceria = paramTapiceria;
+            this.tapiceria = tapiceria;
+
+            //Uso del this sirve para diferenciar cuando se refiere a un campo de clase o a un parametro
+            // al poner this en este caso climatizador y tapiceria "this" hace que haga referencia
+            // a la variable de clase "al campo de clase"
         }
 
         public String getExtras()
@@ -634,13 +656,8 @@ namespace UsoCoche
 
         // definir comportamiento 
 
-
     }
 }
 
-//**********************************++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// getters & setters
-// uso del this
-// dividir (split) las clases largas
 
